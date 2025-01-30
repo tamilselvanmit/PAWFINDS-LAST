@@ -26,7 +26,7 @@ app.use('/auth', AuthRoute)
 mongoose.connect("mongodb://localhost:27017/petAdoptionDB")
     .then(() => {
         console.log('Connected to DB');
-        const PORT = 4000;
+        const PORT = 3001;
         app.listen(PORT, () => {
             console.log(`Listening on port ${PORT}`)
         })
