@@ -7,8 +7,10 @@ const AdminRoute = require('./Routes/AdminRoute')
 const AuthRoute = require('./Routes/AuthRoute')
 const cors = require('cors');
 const path = require('path');
+require('dotenv').config();
 
 const app = express();
+
 
 app.use(cors());
 
@@ -23,7 +25,7 @@ app.use('/form', AdoptFormRoute)
 app.use('/admin', AdminRoute)
 app.use('/auth', AuthRoute)
 
-mongoose.connect("mongodb://localhost:27017/petAdoptionDB")
+mongoose.connect(process.env.MONGO_URI)
     .then(() => {
         console.log('Connected to DB');
         const PORT = 3001;
