@@ -7,7 +7,7 @@ const AdoptedHistory = () => {
 
   const fetchAdoptedPets = async () => {
     try {
-      const response = await fetch('http://localhost:4000/adoptedPets');
+      const response = await fetch('https://pawfinds-last.onrender.com/adoptedPets');
       if (!response.ok) {
         throw new Error('An error occurred while fetching adopted pets');
       }

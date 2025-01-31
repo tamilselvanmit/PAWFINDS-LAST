@@ -62,7 +62,7 @@ const Signup = () => {
             // Remove confirmPassword before sending to backend
             const { confirmPassword, ...submitData } = formData;
             
-            const response = await axios.post('https://pawfinds-backend.onrender.com/auth/signup', submitData);
+            const response = await axios.post('https://pawfinds-last.onrender.com/auth/signup', submitData);
             
             // Store authentication details
             localStorage.setItem('token', response.data.token);

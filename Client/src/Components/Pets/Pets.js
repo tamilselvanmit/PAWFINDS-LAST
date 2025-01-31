@@ -24,7 +24,7 @@ const AdoptionModal = ({ pet, onClose, onSubmit }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:4000/form/save', formData);
+      const response = await axios.post('https://pawfinds-last.onrender.com/form/save', formData);
       alert('Adoption form submitted successfully!');
       onSubmit();
       onClose();
@@ -194,7 +194,7 @@ const Pets = () => {
     const fetchRequests = async () => {
       try {
         // Uncomment the following line to fetch from backend when ready
-        // const response = await fetch('http://localhost:4000/approvedPets')
+        // const response = await fetch('https://pawfinds-last.onrender.com/approvedPets')
         // const data = await response.json()
         
         // For now, use mock data
