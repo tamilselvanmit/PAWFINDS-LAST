@@ -99,8 +99,8 @@ const AdoptionModal = ({ pet, onClose, onSubmit }) => {
 const mockPets = [
   {
     _id: '1',
-    name: 'Rabbit',
-    type: 'Dog',
+    name: 'leo',
+    type: 'Rabbit',
     age: '3 years',
     breed: 'Golden Retriever',
     area: 'New York',
