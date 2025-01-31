@@ -38,38 +38,38 @@ function AdoptForm(props) {
     }
 
     try {
+      setIsSubmitting(true);
 
-      setIsSubmitting(true)
-
-      const response = await fetch('https://pawfinds-last.onrender.com/form/save', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          email,
-          phoneNo,
-          livingSituation,
-          previousExperience,
-          familyComposition,
-          petId: props.pet._id
-        })
-      })
+      const response = await fetch(
+        "https://pawfinds-last.onrender.com/form/save",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email,
+            phoneNo,
+            livingSituation,
+            previousExperience,
+            familyComposition,
+            petId: props.pet._id,
+          }),
+        }
+      );
 
       if (!response.ok) {
-        setErrPopup(true)
+        setErrPopup(true);
         return;
       } else {
-        setSuccPopup(true)
+        setSuccPopup(true);
       }
-    }
-    catch (err) {
-      setErrPopup(true)
+    } catch (err) {
+      setErrPopup(true);
       console.error(err);
       return;
     } finally {
-      setIsSubmitting(false)
-
+      setIsSubmitting(false);
     }
 
     setEmailError(false);
@@ -86,9 +86,7 @@ function AdoptForm(props) {
       <h2 className="custom-form-heading">Pet Adoption Application</h2>
       <div className="form-pet-container">
         <div className="pet-details">
-          <div className="pet-pic">
-            <img src={`https://pawfinds-last.onrender.com/images/${props.pet.filename}`} alt={props.pet.name} />
-          </div>
+          <div className="pet-pic"></div>
           <div className="pet-info">
             <h2>{props.pet.name}</h2>
             <p>
@@ -107,11 +105,7 @@ function AdoptForm(props) {
             <div className="custom-input-box">
               <div className="email-not-valid">
                 <label className="custom-label">Email:</label>
-                {emailError && (
-                  <p>
-                    Please provide valid email address.
-                  </p>
-                )}
+                {emailError && <p>Please provide valid email address.</p>}
               </div>
               <input
                 type="text"
@@ -159,17 +153,22 @@ function AdoptForm(props) {
             {formError && (
               <p className="error-message">Please fill out all fields.</p>
             )}
-            <button disabled={isSubmitting} type="submit" className="custom-cta-button custom-m-b">
-              {isSubmitting ? 'Submitting' : 'Submit'}
+            <button
+              disabled={isSubmitting}
+              type="submit"
+              className="custom-cta-button custom-m-b"
+            >
+              {isSubmitting ? "Submitting" : "Submit"}
             </button>
             {ErrPopup && (
               <div className="popup">
                 <div className="popup-content">
-                  <h4>
-                    Oops!... Connection Error.
-                  </h4>
+                  <h4>Oops!... Connection Error.</h4>
                 </div>
-                <button onClick={(e) => (setErrPopup(!ErrPopup))} className="close-btn">
+                <button
+                  onClick={(e) => setErrPopup(!ErrPopup)}
+                  className="close-btn"
+                >
                   Close <i className="fa fa-times"></i>
                 </button>
               </div>
@@ -178,13 +177,17 @@ function AdoptForm(props) {
               <div className="popup">
                 <div className="popup-content">
                   <h4>
-                    Adoption Form of {props.pet.name} is Submitted; we'll get in touch with you soon for further process.
+                    Adoption Form of {props.pet.name} is Submitted; we'll get in
+                    touch with you soon for further process.
                   </h4>
                 </div>
-                <button onClick={(e) => {
-                  setSuccPopup(!SuccPopup);
-                  props.closeForm();
-                }} className="close-btn">
+                <button
+                  onClick={(e) => {
+                    setSuccPopup(!SuccPopup);
+                    props.closeForm();
+                  }}
+                  className="close-btn"
+                >
                   Close <i className="fa fa-times"></i>
                 </button>
               </div>
