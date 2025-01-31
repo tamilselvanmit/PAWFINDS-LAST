@@ -18,7 +18,7 @@ const PetsViewer = (props) => {
   const getImageSrc = (filename) => {
     try {
       // Try to import the image from assets
-      return require(`../../assets/images/${filename}`);
+      return require(`/src/assets/images/${filename}`);
     } catch (error) {
       // Fallback to original image path or a default image
       console.warn(`Image not found: ${filename}`);
